@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta name="google-site-verification" content="LCGPDSlNvAWgG8nmTtlGldRpRumg4z9EgABCd0Uh0HY" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora Pediátrica</title>
@@ -10,15 +9,15 @@
 <body>
 
 <div class="container">
-    <h2>Calculadora Pediátrica</h2>
+    <h2>👨‍⚕️ Calculadora Pediátrica 👩‍⚕️</h2>
 
-    <label for="posologia">Posología (mg/kg/día):</label>
+    <label for="posologia">💊​Posología (mg/kg/día):</label>
     <input type="number" id="posologia" placeholder="Ingrese la posología">
 
-    <label for="peso">Peso del paciente (kg):</label>
+    <label for="peso">👶🏼​Peso del paciente (kg):</label>
     <input type="number" id="peso" placeholder="Ingrese el peso">
 
-    <label for="dosis">Dosis a emplear:</label>
+    <label for="dosis">⌛​Dosis a emplear:</label>
     <select id="dosis">
         <option value="6">Cada 4 horas (6 dosis)</option>
         <option value="4">Cada 6 horas (4 dosis)</option>
@@ -27,8 +26,8 @@
         <option value="1">Cada 24 horas (1 dosis)</option>
     </select>
 
-    <label for="dosisMax">Dosis máxima permitida (mg/día) <span class="opcional">(Opcional)</span>:</label>
-    <input type="number" id="dosisMax" placeholder="Ingrese solo si hay un límite">
+    <label for="dosisMax">👉​Dosis máxima permitida (mg/día) <span class="opcional">(Opcional)</span>:</label>
+    <input type="number" id="dosisMax" placeholder="Ingrese solo si hay dosis maxima permitida">
 
     <button onclick="calcularDosis()">Calcular</button>
 
