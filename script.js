@@ -19,37 +19,13 @@ function calcularDosis() {
     let dosisPorToma = dosisTotalDia / dosis;
     let horas = 24 / dosis;
 
-    document.getElementById('resultado').innerText = 
-        `Se administrará ${dosisPorToma.toFixed(2)} mg cada ${horas} horas (${dosis} dosis)`;
+    let resultadoTexto = `Se administrará ${dosisPorToma.toFixed(2)} mg cada ${horas} horas (${dosis} dosis)`;
 
+    // Modificar el texto si la opción es "En 1 dosis o 24 horas"
+    if (dosis === 1) {
+        resultadoTexto = `Se administrará ${dosisPorToma.toFixed(2)} mg en 1 dosis o 24 horas.`;
+    }
+
+    document.getElementById('resultado').innerText = resultadoTexto;
     document.getElementById('resultado').classList.remove('hidden');
-}
-
-function toggleConversion() {
-    const conversionSection = document.getElementById('conversion');
-    const quiereML = document.getElementById('quiereML').checked;
-
-    if (quiereML) {
-        conversionSection.classList.remove('hidden');
-    } else {
-        conversionSection.classList.add('hidden');
-    }
-}
-
-function convertirML() {
-    let mgBase = parseFloat(document.getElementById('mgBase').value);
-    let mlBase = parseFloat(document.getElementById('mlBase').value);
-    let dosisCalculada = parseFloat(document.getElementById('resultado').innerText.match(/[\d.]+/)[0]);
-
-    if (isNaN(mgBase) || isNaN(mlBase)) {
-        alert("Por favor, ingrese los valores de mg y ml según el prospecto.");
-        return;
-    }
-
-    let resultadoML = (dosisCalculada * mlBase) / mgBase;
-
-    document.getElementById('resultadoML').innerText = 
-        `${dosisCalculada} mg equivalen a ${resultadoML.toFixed(2)} ml`;
-
-    document.getElementById('resultadoML').classList.remove('hidden');
 }
