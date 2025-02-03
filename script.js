@@ -1,33 +1,55 @@
 function calcularDosis() {
-    let posologia = parseFloat(document.getElementById("posologia").value);  // Convertir a número
-    let peso = parseFloat(document.getElementById("peso").value);  // Convertir a número
-    let dosisSeleccionada = document.getElementById("dosis").value;
-    let dosisMax = parseFloat(document.getElementById("dosisMax").value);  // Convertir a número
-    let resultadoDiv = document.getElementById("resultado");
+    let posologia = parseFloat(document.getElementById('posologia').value);
+    let peso = parseFloat(document.getElementById('peso').value);
+    let dosis = parseInt(document.getElementById('dosis').value);
+    let dosisMax = parseFloat(document.getElementById('dosisMax').value); // No es obligatorio
 
-    // Validar si los campos requeridos están completos y son números
-    if (isNaN(posologia) || isNaN(peso)) {
-        resultadoDiv.innerHTML = "Por favor, ingrese valores válidos para la posología y el peso del paciente.";
+    if (isNaN(posologia) || isNaN(peso) || isNaN(dosis)) {
+        alert("Por favor, ingrese la posología, el peso y la dosis.");
         return;
     }
 
-    // Calcular la dosis total
-    let dosisTotal = posologia * peso;
+    let dosisTotalDia = posologia * peso;
+    
+    // 📌 Si el usuario ingresó una dosis máxima, la aplicamos
+    if (!isNaN(dosisMax) && dosisTotalDia > dosisMax) {
+        dosisTotalDia = dosisMax;
+    }
 
-    // Si se selecciona "1 dosis o Cada 24 Horas"
-    if (dosisSeleccionada == 1) {
-        resultadoDiv.innerHTML = "En Mono dosis o el 24 horas.";
+    let dosisPorToma = dosisTotalDia / dosis;
+    let horas = 24 / dosis;
+
+    document.getElementById('resultado').innerText = 
+        `Se administrará ${dosisPorToma.toFixed(2)} mg cada ${horas} horas (${dosis} dosis)`;
+
+    document.getElementById('resultado').classList.remove('hidden');
+}
+
+function toggleConversion() {
+    const conversionSection = document.getElementById('conversion');
+    const quiereML = document.getElementById('quiereML').checked;
+
+    if (quiereML) {
+        conversionSection.classList.remove('hidden');
+    } else {
+        conversionSection.classList.add('hidden');
+    }
+}
+
+function convertirML() {
+    let mgBase = parseFloat(document.getElementById('mgBase').value);
+    let mlBase = parseFloat(document.getElementById('mlBase').value);
+    let dosisCalculada = parseFloat(document.getElementById('resultado').innerText.match(/[\d.]+/)[0]);
+
+    if (isNaN(mgBase) || isNaN(mlBase)) {
+        alert("Por favor, ingrese los valores de mg y ml según el prospecto.");
         return;
     }
 
-    // Si existe dosis máxima y la dosis total la excede, ajustar la dosis total
-    if (!isNaN(dosisMax) && dosisTotal > dosisMax) {
-        dosisTotal = dosisMax;
-    }
+    let resultadoML = (dosisCalculada * mlBase) / mgBase;
 
-    // Calcular la cantidad por dosis según la selección de frecuencia
-    let dosisPorAplicacion = dosisTotal / dosisSeleccionada;
+    document.getElementById('resultadoML').innerText = 
+        `${dosisCalculada} mg equivalen a ${resultadoML.toFixed(2)} ml`;
 
-    resultadoDiv.innerHTML = `La dosis total es: ${dosisTotal} mg/día.<br>
-                              Dosis por aplicación: ${dosisPorAplicacion} mg.`;
+    document.getElementById('resultadoML').classList.remove('hidden');
 }
