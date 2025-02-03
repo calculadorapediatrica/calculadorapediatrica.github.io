@@ -1,0 +1,144 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    width: 90%;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 1.6em;
+    color: #2d2d2d;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 1.1em;
+    color: #4f4f4f;
+}
+
+input, select, button {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 1em;
+}
+
+input:focus, select:focus, button:focus {
+    border-color: #007aff;
+    outline: none;
+}
+
+button {
+    background-color: #007aff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #005bb5;
+}
+
+button:disabled {
+    background-color: #d1d1d6;
+    cursor: not-allowed;
+}
+
+.hidden {
+    display: none;
+}
+
+.resultado {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f0f0f5;
+    border-radius: 10px;
+    font-size: 1.1em;
+    text-align: center;
+    color: #333;
+    border: 1px solid #e0e0e0;
+}
+
+#conversion {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#conversion button {
+    background-color: #28a745;
+    color: white;
+    margin: 5px;
+}
+
+#conversion button:hover {
+    background-color: #218838;
+}
+
+#conversionFields {
+    display: none;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+#conversionFields input {
+    margin-bottom: 10px;
+}
+
+h3 {
+    font-size: 1.3em;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 1.4em;
+    }
+
+    label {
+        font-size: 1em;
+    }
+
+    input, select, button {
+        padding: 10px;
+        font-size: 0.9em;
+    }
+
+    .resultado {
+        font-size: 1em;
+    }
+
+    #conversionFields input {
+        font-size: 0.9em;
+    }
+}
