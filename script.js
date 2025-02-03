@@ -1,13 +1,13 @@
 function calcularDosis() {
-    let posologia = document.getElementById("posologia").value;
-    let peso = document.getElementById("peso").value;
+    let posologia = parseFloat(document.getElementById("posologia").value);  // Convertir a número
+    let peso = parseFloat(document.getElementById("peso").value);  // Convertir a número
     let dosisSeleccionada = document.getElementById("dosis").value;
-    let dosisMax = document.getElementById("dosisMax").value;
+    let dosisMax = parseFloat(document.getElementById("dosisMax").value);  // Convertir a número
     let resultadoDiv = document.getElementById("resultado");
 
-    // Validar si los campos requeridos están completos
-    if (posologia === "" || peso === "") {
-        resultadoDiv.innerHTML = "Por favor, ingrese la posología y el peso del paciente.";
+    // Validar si los campos requeridos están completos y son números
+    if (isNaN(posologia) || isNaN(peso)) {
+        resultadoDiv.innerHTML = "Por favor, ingrese valores válidos para la posología y el peso del paciente.";
         return;
     }
 
@@ -20,8 +20,8 @@ function calcularDosis() {
         return;
     }
 
-    // Si existe dosis máxima, verificar que no la exceda
-    if (dosisMax !== "" && dosisTotal > dosisMax) {
+    // Si existe dosis máxima y la dosis total la excede, ajustar la dosis total
+    if (!isNaN(dosisMax) && dosisTotal > dosisMax) {
         dosisTotal = dosisMax;
     }
 
