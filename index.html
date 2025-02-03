@@ -23,7 +23,7 @@
         <option value="4">Cada 6 horas (4 dosis)</option>
         <option value="3">Cada 8 horas (3 dosis)</option>
         <option value="2">Cada 12 horas (2 dosis)</option>
-        <option value="1">1 dosis o Cada 24 Horas</option>
+        <option value="1">Cada 24 horas (1 dosis)</option>
     </select>
 
     <label for="dosisMax">👉​Dosis máxima permitida (mg/día) <span class="opcional">(Opcional)</span>:</label>
@@ -34,13 +34,13 @@
     <div id="resultado" class="resultado"></div>
 
     <div class="pregunta-ml">
-        <label for="quiereML">¿Quieres pasarlo a Mililitros?</label>
+        <label for="quiereML">¿Quieres pasar a ml?</label>
         <input type="checkbox" id="quiereML" onchange="toggleConversion()">
     </div>
 
     <div id="conversion" class="hidden">
         <h3>Conversión a ml</h3>
-        <p>Antes de continuar verifique en la caja del medicamento o en el prospecto la equivalencia en mililitros.</p>
+        <p>Antes de continuar, verifique en la caja del medicamento o en el prospecto la equivalencia en ml.</p>
         <label for="mgBase">Mg en prospecto:</label>
         <input type="number" id="mgBase" placeholder="Ej: 10 mg">
         
