@@ -1,3 +1,5 @@
+let dosisPorToma = 0; // Variable global para dosis por toma
+
 function calcularDosis() {
     let posologia = parseFloat(document.getElementById('posologia').value);
     let peso = parseFloat(document.getElementById('peso').value);
@@ -10,13 +12,13 @@ function calcularDosis() {
     }
 
     let dosisTotalDia = posologia * peso;
-    
+
     // 📌 Si el usuario ingresó una dosis máxima, la aplicamos
     if (!isNaN(dosisMax) && dosisTotalDia > dosisMax) {
         dosisTotalDia = dosisMax;
     }
 
-    let dosisPorToma = dosisTotalDia / dosis;
+    dosisPorToma = dosisTotalDia / dosis; // Asignar la dosis por toma para usar en la conversión a ml
     let horas = 24 / dosis;
 
     let resultadoTexto = `Se administrará ${dosisPorToma.toFixed(2)} mg cada ${horas} horas (${dosis} dosis)`;
@@ -28,4 +30,34 @@ function calcularDosis() {
 
     document.getElementById('resultado').innerText = resultadoTexto;
     document.getElementById('resultado').classList.remove('hidden');
+}
+
+function toggleConversion() {
+    let conversionDiv = document.getElementById('conversion');
+    let quiereML = document.getElementById('quiereML').checked;
+
+    if (quiereML) {
+        conversionDiv.classList.remove('hidden');
+    } else {
+        conversionDiv.classList.add('hidden');
+    }
+}
+
+function convertirML() {
+    let mgBase = parseFloat(document.getElementById('mgBase').value);
+    let mlBase = parseFloat(document.getElementById('mlBase').value);
+
+    if (isNaN(mgBase) || isNaN(mlBase)) {
+        alert("Por favor, ingrese la cantidad de mg y ml correctamente.");
+        return;
+    }
+
+    if (mgBase <= 0 || mlBase <= 0) {
+        alert("Los valores deben ser mayores que cero.");
+        return;
+    }
+
+    let resultadoML = (dosisPorToma * mlBase) / mgBase;
+    document.getElementById('resultadoML').innerText = `La dosis en ml es: ${resultadoML.toFixed(2)} ml.`;
+    document.getElementById('resultadoML').classList.remove('hidden');
 }
