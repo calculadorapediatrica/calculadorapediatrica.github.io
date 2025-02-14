@@ -3,60 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Calculadora pediátrica para dosificar medicamentos en niños según peso y posología. Incluye conversión a mililitros.">
-    <meta name="keywords" content="calculadora pediátrica, dosis pediátricas, posología infantil, dosificación medicamentos niños">
     <title>Calculadora Pediátrica</title>
     <link rel="stylesheet" href="styles.css">
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Calculadora Pediátrica",
-      "description": "Herramienta online para calcular la dosis de medicamentos pediátricos según peso y posología.",
-      "url": "https://tusitio.com/calculadora-pediatrica"
-    }
-    </script>
-    <style>
-        h1 {
-            white-space: nowrap;
-        }
-    </style>
-</head>    
+</head>
 <body>
-
 <div class="container">
     <h2>👨‍⚕️ Calculadora Pediátrica 👩‍⚕️</h2>
-
     <label for="posologia">💊​Posología (mg/kg/día):</label>
     <input type="number" id="posologia" placeholder="Ingrese la posología">
-
     <label for="peso">👶🏼​Peso del paciente (kg):</label>
     <input type="number" id="peso" placeholder="Ingrese el peso">
-
     <label for="dosis">⌛​Dosis a emplear:</label>
     <select id="dosis">
         <option value="6">Cada 4 horas (6 dosis)</option>
         <option value="4">Cada 6 horas (4 dosis)</option>
         <option value="3">Cada 8 horas (3 dosis)</option>
         <option value="2">Cada 12 horas (2 dosis)</option>
-<option value="1">En 1 dosis o 24 horas</option>
-
-
+        <option value="1">En 1 dosis o 24 horas</option>
+    </select>
     <label for="dosisMax">👉​Dosis máxima permitida (mg/día) <span class="opcional">(Opcional)</span>:</label>
     <input type="number" id="dosisMax" placeholder="Ingrese solo si hay dosis maxima permitida">
-
     <button onclick="calcularDosis()">Calcular</button>
-
     <div id="resultado" class="resultado"></div>
-
     <div class="pregunta-ml">
         <label for="quiereML">¿Quieres pasar a mililitros?</label>
         <input type="checkbox" id="quiereML" onchange="toggleConversion()">
     </div>
-
     <div id="conversion" class="hidden">
         <h3>Conversión a mililitros</h3>
         <p>Antes de continuar, verifique en la caja del medicamento o en el prospecto la equivalencia en ml.</p>
+
+        <!-- Nuevo campo para ingresar manualmente mg -->
+        <label for="mgManual">Cantidad en mg (opcional):</label>
+        <input type="number" id="mgManual" placeholder="Ingrese mg directamente">
+
         <label for="mgBase">Mg en prospecto:</label>
         <input type="number" id="mgBase" placeholder="Ej: 10 mg">
         
@@ -67,8 +47,6 @@
         <div id="resultadoML" class="resultado"></div>
     </div>
 </div>
-
 <script src="script.js"></script>
-
 </body>
 </html>
