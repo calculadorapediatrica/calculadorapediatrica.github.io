@@ -1,5 +1,6 @@
 let dosisPorToma = 0; // Variable global para dosis por toma
 
+// Función para calcular la dosis
 function calcularDosis() {
     let posologia = parseFloat(document.getElementById('posologia').value);
     let peso = parseFloat(document.getElementById('peso').value);
@@ -13,14 +14,13 @@ function calcularDosis() {
 
     let dosisTotalDia = posologia * peso;
 
-    // 📌 Si el usuario ingresó una dosis máxima, la aplicamos
+    // Si el usuario ingresó una dosis máxima, la aplicamos
     if (!isNaN(dosisMax) && dosisTotalDia > dosisMax) {
         dosisTotalDia = dosisMax;
     }
 
     dosisPorToma = dosisTotalDia / dosis; // Asignar la dosis por toma para usar en la conversión a ml
     let horas = 24 / dosis;
-
     let resultadoTexto = `Se administrará ${dosisPorToma.toFixed(2)} mg cada ${horas} horas (${dosis} dosis)`;
 
     // Modificar el texto si la opción es "En 1 dosis o 24 horas"
@@ -32,10 +32,10 @@ function calcularDosis() {
     document.getElementById('resultado').classList.remove('hidden');
 }
 
+// Función para mostrar/ocultar la sección de conversión a ml
 function toggleConversion() {
     let conversionDiv = document.getElementById('conversion');
     let quiereML = document.getElementById('quiereML').checked;
-
     if (quiereML) {
         conversionDiv.classList.remove('hidden');
     } else {
@@ -43,21 +43,29 @@ function toggleConversion() {
     }
 }
 
+// Función para convertir mg a ml
 function convertirML() {
     let mgBase = parseFloat(document.getElementById('mgBase').value);
     let mlBase = parseFloat(document.getElementById('mlBase').value);
+    let mgManual = parseFloat(document.getElementById('mgManual').value); // Nuevo campo
 
+    // Validar que los valores de mgBase y mlBase estén presentes
     if (isNaN(mgBase) || isNaN(mlBase)) {
         alert("Por favor, ingrese la cantidad de mg y ml correctamente.");
         return;
     }
-
     if (mgBase <= 0 || mlBase <= 0) {
         alert("Los valores deben ser mayores que cero.");
         return;
     }
 
-    let resultadoML = (dosisPorToma * mlBase) / mgBase;
+    // Determinar qué cantidad usar para la conversión: mgManual (si está presente) o dosisPorToma
+    let mgParaConvertir = isNaN(mgManual) ? dosisPorToma : mgManual;
+
+    // Calcular la conversión
+    let resultadoML = (mgParaConvertir * mlBase) / mgBase;
+
+    // Mostrar el resultado
     document.getElementById('resultadoML').innerText = `La dosis en ml es: ${resultadoML.toFixed(2)} ml.`;
     document.getElementById('resultadoML').classList.remove('hidden');
 }
