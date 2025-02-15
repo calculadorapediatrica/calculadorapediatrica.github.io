@@ -56,21 +56,21 @@
         <button onclick="calcularDosis()">Calcular</button>
         <div id="resultado" class="resultado"></div>
         <div class="pregunta-ml">
-            <label for="quiereML">¿Quieres pasar a mililitros?👇DALE CLIC👇</label>
+            <label for="quiereML">👇¿Quieres pasar a mililitros?👇</label>
             <input type="checkbox" id="quiereML" onchange="toggleConversion()">
         </div>
         <div id="conversion" class="hidden">
             <h3>Conversión a mililitros</h3>
-            <p class="alerta">Antes de continuar, verifique en la caja del medicamento o en el prospecto la equivalencia en ml.</p>
+            <p class="alerta">⚠️Antes de continuar, verifique en la caja del medicamento o en el prospecto la equivalencia en ml⚠️</p>
 
             <!-- Nuevo campo para ingresar manualmente mg -->
-            <label for="mgManual">Cantidad en mg (OPCIONAL):</label>
+            <label for="mgManual">🔺️Cantidad en mg (OPCIONAL):</label>
             <input type="number" id="mgManual" placeholder="SOLO SI NO HAY RESULTADO ANTERIOR">
 
-            <label for="mgBase">Mg en prospecto:</label>
+            <label for="mgBase">🔹️Mg en prospecto:</label>
             <input type="number" id="mgBase" placeholder="Ej: 10 mg">
             
-            <label for="mlBase">Equivale a (ml):</label>
+            <label for="mlBase">🔹️Equivale a (ml):</label>
             <input type="number" id="mlBase" placeholder="Ej: 5 ml">
             
             <button onclick="convertirML()">Convertir a ml</button>
