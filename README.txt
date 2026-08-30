@@ -1,1 +1,0 @@
-Versión sin bloque de keywords - SEO natural
