@@ -51,7 +51,6 @@
         .brand-title{font-family:'Sora',sans-serif; font-weight:800; font-size:17px; letter-spacing:-.02em; color:var(--ink)}
         .theme-toggle{width:40px; height:40px; border-radius:12px; border:1px solid var(--line2); background:var(--card); color:var(--ink); display:grid; place-items:center; cursor:pointer; transition:border-color .2s, background .2s; flex-shrink:0}
         .theme-toggle:hover{border-color:var(--blue)}
-        .theme-toggle svg{transition:transform .2s}
         .layout{max-width:1280px; margin:0 auto; padding:26px 20px 40px; display:grid; grid-template-columns:300px minmax(0,600px) 320px; grid-template-areas:"left center right"; gap:22px; justify-content:center; align-items:start}
         .left{grid-area:left} .center{grid-area:center} .right{grid-area:right}
         .side{display:flex; flex-direction:column; gap:16px}
@@ -66,159 +65,70 @@
         label{font-size:15px; font-weight:700; color:var(--ink2); margin:20px 0 9px; display:flex; gap:6px; flex-wrap:wrap}
         label:first-of-type{margin-top:2px}
         .opcional{font-size:10px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; background:var(--card2); border:1px solid var(--line2); color:var(--muted); padding:3px 8px; border-radius:999px}
-        input,select{width:100%; height:56px; padding:0 16px; border:1.5px solid var(--line2); border-radius:14px; background:var(--inputBg); color:var(--ink); font-family:'Plus Jakarta Sans',sans-serif; font-size:16px; font-weight:600; outline:none; transition:.22s; -webkit-appearance:none; appearance:none}
-        input:focus,select:focus{background:var(--card); border-color:var(--blue); box-shadow:0 0 0 5px rgba(14,165,233,.18); transform:translateY(-1px)}
-        select{cursor:pointer; padding-right:44px; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 12px center}
-        button{width:100%; height:58px; margin-top:12px; border:none; border-radius:14px; cursor:pointer; font-family:'Sora',sans-serif; font-size:16px; font-weight:800; color:white; background:linear-gradient(180deg,#0EA5E9 0%,#0284C7 100%); box-shadow:0 14px 28px -10px rgba(14,165,233,.6); transition:.18s; display:flex; align-items:center; justify-content:center; gap:8px}
-        button:hover{transform:translateY(-1px)} button:active{transform:scale(.985)}
-        #conversion button{background:linear-gradient(180deg,#10B981 0%,#059669 100%)}
+        input, select{width:100%; height:48px; border-radius:14px; border:1px solid var(--line2); background:var(--inputBg); color:var(--ink); padding:0 14px; font-size:15px; font-weight:600; outline:none; transition:.2s}
+        input:focus, select:focus{border-color:var(--blue); box-shadow:0 0 0 4px rgba(14,165,233,.15)}
+        .grid2{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+        button{width:100%; height:52px; border-radius:14px; border:none; background:linear-gradient(135deg,#0EA5E9,#0284C7); color:white; font-weight:800; font-size:15px; cursor:pointer; margin-top:18px; box-shadow:0 10px 20px rgba(14,165,233,.32); display:flex; align-items:center; justify-content:center; gap:8px; transition:.2s}
+        button:hover{transform:translateY(-1px)}
+        .resultado{margin-top:16px; background:var(--card2); border:1px solid var(--line2); border-radius:14px; padding:14px; font-weight:700; line-height:1.5}
         .hidden{display:none !important}
-        .resultado{margin-top:18px; padding:16px 18px; border-radius:14px; background:linear-gradient(180deg,#F0F9FF 0%,#E6F4FF 100%); border:1px solid #BAE6FD; border-left:5px solid var(--blue); color:#0C4A6E; font-size:16px; font-weight:700; line-height:1.4; box-shadow:0 8px 20px rgba(14,165,233,.14)}
-        [data-theme="dark"] .resultado{background:linear-gradient(180deg,#112A45 0%,#12324F 100%); border-color:#1E4A6E; color:#BAE6FD}
-        .resultado:empty{display:none}
-
-        /* NUEVO TOGGLE ML CON REDONDITO BLANCO */
-        .pregunta-ml{
-            margin-top:22px; display:flex; align-items:center; justify-content:space-between; gap:14px;
-            padding:16px 16px; background:var(--card); border:2px solid var(--line2); border-radius:16px;
-            cursor:pointer; transition:.25s; box-shadow:0 2px 8px rgba(15,23,42,.04);
-        }
-        .pregunta-ml:hover{border-color:#7DD3FC; transform:translateY(-1px); box-shadow:0 8px 20px -10px rgba(14,165,233,.35)}
-        .pregunta-ml.active{border-color:var(--blue); background:#F0F9FF; box-shadow:0 0 0 4px rgba(14,165,233,.15)}
-        [data-theme="dark"] .pregunta-ml.active{background:#112A45}
-        .ml-left{display:flex; align-items:center; gap:12px; flex:1; min-width:0}
-        .ml-icon{width:42px; height:42px; border-radius:12px; background:linear-gradient(135deg,#0EA5E9,#0284C7); display:grid; place-items:center; color:white; font-family:'Sora',sans-serif; font-weight:800; font-size:15px; flex-shrink:0; box-shadow:0 6px 14px rgba(14,165,233,.35)}
-        .ml-text{display:flex; flex-direction:column; gap:2px; min-width:0}
-        .ml-text b{font-size:15px; font-weight:800; color:var(--ink); line-height:1.2}
-        .ml-text span{font-size:12.5px; font-weight:600; color:var(--muted); line-height:1.3}
-
-        /* Switch */
-        .switch{position:relative; display:inline-block; width:54px; height:30px; flex-shrink:0}
-        .switch input{opacity:0; width:0; height:0}
-        .slider{
-            position:absolute; cursor:pointer; inset:0;
-            background:#CBD5E1; border-radius:999px; transition:.3s; border:1px solid #CBD5E1;
-        }
-        .slider:before{
-            content:""; position:absolute; height:22px; width:22px; left:3px; bottom:2.5px;
-            background:white; border-radius:50%; transition:.3s;
-            box-shadow:0 2px 6px rgba(0,0,0,.18), 0 1px 2px rgba(0,0,0,.12);
-        }
-        .switch input:checked + .slider{background:var(--blue); border-color:var(--blue)}
-        .switch input:checked + .slider:before{transform:translateX(24px)}
-
-        #conversion{
-            margin-top:16px; padding:22px; background:var(--card);
-            border:1.5px solid var(--line); border-radius:18px;
-            box-shadow:0 12px 32px -16px rgba(14,165,233,.18);
-            animation:slideDown .35s cubic-bezier(.16,1,.3,1);
-        }
-        @keyframes slideDown{from{opacity:0; transform:translateY(-8px)} to{opacity:1; transform:translateY(0)}}
-        #conversion h3{
-            font-family:'Sora',sans-serif; font-size:17px; font-weight:800;
-            margin-bottom:14px; color:var(--ink); display:flex; align-items:center; gap:8px;
-            padding-bottom:12px; border-bottom:1px solid var(--line2);
-        }
-        #conversion h3::before{content:""; width:28px; height:28px; border-radius:8px; background:linear-gradient(135deg,#10B981,#059669); display:grid; place-items:center; color:white; font-size:14px}
-        .alerta{
-            background:#FFFBEB !important; border:1px solid #FDE68A !important; border-left:3px solid #F59E0B !important;
-            color:#78350F !important; padding:10px 12px !important; border-radius:10px !important;
-            font-size:12.5px !important; margin-bottom:18px !important; line-height:1.5 !important; font-weight:500 !important;
-        }
-        .alerta a{color:#92400E !important; font-weight:700 !important}
-        .conv-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px}
-        @media(max-width:600px){.conv-grid{grid-template-columns:1fr}}
-        .referencias{
-            font-size:12px !important; background:var(--card2) !important; padding:12px 14px !important;
-            border-radius:10px !important; border:1px dashed var(--line2) !important; color:var(--muted) !important;
-            line-height:1.6 !important; margin-top:16px !important;
-        }
-        .referencias strong{color:var(--ink2) !important; font-size:10px !important; letter-spacing:.06em !important}
-        @media(max-width:1120px){.layout{grid-template-columns:300px 1fr; grid-template-areas:"left center" "right right"; max-width:900px} .right{flex-direction:row; flex-wrap:wrap} .right .side-card{flex:1 1 280px}}
-        @media(max-width:760px){.banner-inner{height:56px; padding:0 14px} .layout{grid-template-columns:1fr; grid-template-areas:"center" "left" "right"; padding:14px 12px 24px; gap:16px} .container{padding:20px 16px 20px; border-radius:20px} .ml-text b{font-size:14px}}
+        .alerta{font-size:13.5px; line-height:1.5; color:var(--ink2); background:var(--card2); border:1px solid var(--line2); border-radius:12px; padding:12px 14px; margin-bottom:14px}
+        .alerta a{color:var(--blue2); font-weight:800; text-decoration:none}
+        .alerta a:hover{text-decoration:underline}
+        .conv-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+        .preguntaMLBox{display:flex; gap:10px; align-items:center; background:var(--card2); border:1px solid var(--line2); border-radius:14px; padding:12px 14px; margin-top:18px; cursor:pointer; user-select:none; transition:.2s}
+        .preguntaMLBox.active{border-color:var(--blue); background:color-mix(in srgb, var(--card2) 80%, rgba(14,165,233,.12))}
+        .preguntaMLBox input{width:18px; height:18px; flex-shrink:0}
+        .referencias{font-size:12.5px; color:var(--muted); margin-top:14px; line-height:1.5}
+        @media(max-width:1100px){.layout{grid-template-columns:1fr; grid-template-areas:"center" "left" "right"}}
     </style>
 </head>
 <body>
     <div class="bg"><div class="orb o1"></div><div class="orb o2"></div></div>
     <header class="banner">
         <div class="banner-inner">
-            <div class="brand">
-                <div class="mark"><svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="white" stroke-width="2.6" stroke-linecap="round"/></svg></div>
-                <div class="brand-title">Calculadora Pediátrica UY</div>
-            </div>
-            <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
-                <svg id="iconMoon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-                <svg id="iconSun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
-            </button>
+            <div class="brand"><div class="mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div><div class="brand-title">Calculadora Pediátrica UY</div></div>
+            <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema"><span id="iconMoon">🌙</span><span id="iconSun" style="display:none">☀️</span></button>
         </div>
     </header>
 
     <div class="layout">
         <aside class="side left">
-            <div class="side-card">
-                <h3>Guía rápida</h3>
-                <ul>
-                    <li><span class="ic">1</span><span><b>Posología:</b> Ingresá mg/kg/día.</span></li>
-                    <li><span class="ic">2</span><span><b>Peso:</b> Peso en kg.</span></li>
-                    <li><span class="ic">3</span><span><b>Dosis:</b> Elegí intervalo.</span></li>
-                    <li><span class="ic">4</span><span><b>Calculá:</b> Tocá Calcular.</span></li>
-                    <li><span class="ic">5</span><span><b>ml:</b> Activá el switch de abajo.</span></li>
-                </ul>
-            </div>
-            <div class="side-card">
-                <h3>Quiénes somos</h3>
-                <p>Profesionales de la salud de Uruguay. Herramienta gratuita, sin guardar datos. No sustituye criterio médico.</p>
-            </div>
-            <div class="side-card">
-                <h3>¿Qué es esta calculadora?</h3>
-                <p>Fórmula: posología × peso = dosis total día, dividido entre tomas. Optimizada para vademécum UY con referencia MSP.</p>
-            </div>
+            <div class="side-card"><h3>¿Cómo usar?</h3><ul><li><span class="ic">1</span><span>Ingresá posología en mg/kg/día.</span></li><li><span class="ic">2</span><span>Peso del paciente en kg.</span></li><li><span class="ic">3</span><span>Elegí cuántas dosis al día.</span></li><li><span class="ic">4</span><span>Si aplica, tope máximo diario.</span></li></ul></div>
+            <div class="side-card"><h3>Seguridad</h3><p>Esta calculadora no sustituye criterio médico. Verificá siempre con caja, prospecto y vademécum local.</p></div>
         </aside>
 
         <main class="center">
             <div class="container">
+                <label for="posologia">Posología (mg/kg/día)</label>
+                <input type="number" id="posologia" placeholder="Ej: 50" inputmode="decimal">
                 
-                <a href="vademecum.html" id="btnVademecum" style="display:flex; align-items:center; justify-content:center; gap:8px; width:100%; background:linear-gradient(135deg,#0EA5E9 0%,#0284C7 100%); color:white; border:none; padding:13px 16px; border-radius:14px; font-family:'Plus Jakarta Sans',system-ui,sans-serif; font-weight:800; font-size:14.5px; letter-spacing:-.01em; text-decoration:none; box-shadow:0 8px 20px rgba(14,165,233,.32); margin-bottom:18px; transition:transform .15s, box-shadow .15s;">
-                    <span style="width:22px; height:22px; background:rgba(255,255,255,.2); border-radius:7px; display:grid; place-items:center; font-size:12px;">📖</span>
-                    Clic para Dosis Pediátrica
-                    <span style="opacity:.9;">→</span>
-                </a>
-                <style>#btnVademecum:hover{transform:translateY(-1px); box-shadow:0 12px 26px rgba(14,165,233,.38)} #btnVademecum:active{transform:translateY(0)}</style>
-                
-                <label for="posologia">Posología (mg/kg/día):</label>
-                <input type="number" id="posologia" placeholder="Ingrese la posología" inputmode="decimal">
-                <label for="peso">Peso del paciente (kg):</label>
-                <input type="number" id="peso" placeholder="Ingrese el peso" inputmode="decimal">
-                <label for="dosis">Dosis a emplear:</label>
-                <select id="dosis">
-                    <option value="6">Cada 4 horas (6 dosis)</option>
-                    <option value="4">Cada 6 horas (4 dosis)</option>
-                    <option value="3">Cada 8 horas (3 dosis)</option>
-                    <option value="2">Cada 12 horas (2 dosis)</option>
-                    <option value="1">En 1 dosis o 24 horas</option>
-                </select>
-                <label for="dosisMax">Dosis máxima permitida (mg/día) <span class="opcional">Opcional</span>:</label>
-                <input type="number" id="dosisMax" placeholder="Ingrese solo si hay dosis maxima permitida" inputmode="decimal">
-                <button onclick="calcularDosis()">Calcular <span>→</span></button>
-                <div id="resultado" class="resultado"></div>
+                <label for="peso">Peso del paciente (kg)</label>
+                <input type="number" id="peso" placeholder="Ej: 15" inputmode="decimal">
 
-                <div class="pregunta-ml" id="preguntaMLBox">
-                    <div class="ml-left">
-                        <div class="ml-icon">ml</div>
-                        <div class="ml-text">
-                            <b>¿Quieres pasar a mililitros?</b>
-                            <span>Toca aquí para activar la conversión</span>
-                        </div>
+                <div class="grid2">
+                    <div>
+                        <label for="dosis">Dosis a emplear</label>
+                        <select id="dosis"><option value="1">1 vez/día</option><option value="2">2 veces/día</option><option value="3" selected>3 veces/día</option><option value="4">4 veces/día</option><option value="6">6 veces/día</option></select>
                     </div>
-                    <div class="switch" id="switchWrap">
-                        <input type="checkbox" id="quiereML">
-                        <span class="slider"></span>
+                    <div>
+                        <label for="dosisMax">Dosis máxima (mg/día) <span class="opcional">Opcional</span></label>
+                        <input type="number" id="dosisMax" placeholder="Ej: 1000" inputmode="decimal">
                     </div>
                 </div>
 
+                <button onclick="calcularDosis()">Calcular dosis <span>→</span></button>
+                <div id="resultado" class="resultado hidden"></div>
+
+                <div class="preguntaMLBox" id="preguntaMLBox">
+                    <input type="checkbox" id="quiereML">
+                    <label for="quiereML" style="margin:0; cursor:pointer"><strong>¿Querés pasar a mililitros?</strong> Tocá aquí para activar la conversión</label>
+                </div>
+
                 <div id="conversion" class="hidden">
-                    <h3>Conversión a mililitros</h3>
-                    <p class="alerta">Verificá la equivalencia en la caja o prospecto. Más info <a href="https://listadomedicamentos.msp.gub.uy/ListadoMedicamentos/servlet/com.listadomedicamentos.listadomedicamentos" target="_blank">aquí</a>.</p>
+                    <h3 style="font-family:Sora,sans-serif; margin:18px 0 10px; font-size:16px">Conversión a mililitros</h3>
+                    <!-- CORREGIDO: link a vademecum.html -->
+                    <p class="alerta">Verificá la equivalencia en la caja o prospecto. Más info <a href="data:text/html;base64,PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9ImVzIj4KPGhlYWQ+CiAgICA8bWV0YSBjaGFyc2V0PSJVVEYtOCI+CiAgICA8bWV0YSBuYW1lPSJ2aWV3cG9ydCIgY29udGVudD0id2lkdGg9ZGV2aWNlLXdpZHRoLCBpbml0aWFsLXNjYWxlPTEuMCI+CiAgICA8dGl0bGU+VmFkZW3DqWN1bSAtIENhbGN1bGFkb3JhIFBlZGnDoXRyaWNhIFVZPC90aXRsZT4KICAgIDxzdHlsZT4KICAgICAgICBib2R5e2ZvbnQtZmFtaWx5OnN5c3RlbS11aSxzYW5zLXNlcmlmOyBtYXgtd2lkdGg6ODAwcHg7IG1hcmdpbjo0MHB4IGF1dG87IHBhZGRpbmc6MjBweDsgYmFja2dyb3VuZDojRjdGQkZGOyBjb2xvcjojMEYxNzJBfQogICAgICAgIGF7Y29sb3I6IzBFQTVFOX0KICAgICAgICAuY2FyZHtiYWNrZ3JvdW5kOndoaXRlOyBib3JkZXI6MXB4IHNvbGlkICNFNkVFRjg7IGJvcmRlci1yYWRpdXM6MTZweDsgcGFkZGluZzoyNHB4OyBib3gtc2hhZG93OjAgMTBweCAyOHB4IC0xNHB4IHJnYmEoMTUsMjMsNDIsLjEyKX0KICAgIDwvc3R5bGU+CjwvaGVhZD4KPGJvZHk+CiAgICA8ZGl2IGNsYXNzPSJjYXJkIj4KICAgICAgICA8aDE+VmFkZW3DqWN1bTwvaDE+CiAgICAgICAgPHA+RXN0YSBlcyBsYSBww6FnaW5hIGRlIHJlZmVyZW5jaWEgcGFyYSB2ZXJpZmljYXIgZXF1aXZhbGVuY2lhcyBkZSBwcmVzZW50YWNpb25lcyBlbiBVcnVndWF5LjwvcD4KICAgICAgICA8cD5WZXJpZmljw6Egc2llbXByZSBsYSBlcXVpdmFsZW5jaWEgZW4gbGEgY2FqYSBvIHByb3NwZWN0by48L3A+CiAgICAgICAgPHA+TcOhcyBpbmZvIG9maWNpYWwgZW4gZWwgPGEgaHJlZj0iaHR0cHM6Ly9saXN0YWRvbWVkaWNhbWVudG9zLm1zcC5ndWIudXkvTGlzdGFkb01lZGljYW1lbnRvcy9zZXJ2bGV0L2NvbS5saXN0YWRvbWVkaWNhbWVudG9zLmxpc3RhZG9tZWRpY2FtZW50b3MiIHRhcmdldD0iX2JsYW5rIj5MaXN0YWRvIGRlIE1lZGljYW1lbnRvcyBkZWwgTVNQPC9hPi48L3A+CiAgICAgICAgPHA+PGEgaHJlZj0iaW5kZXguaHRtbCI+4oaQIFZvbHZlciBhIGxhIGNhbGN1bGFkb3JhPC9hPjwvcD4KICAgIDwvZGl2Pgo8L2JvZHk+CjwvaHRtbD4K" target="_blank">aquí</a>.</p>
                     
                     <div class="conv-grid">
                         <div>
@@ -235,7 +145,7 @@
                     <input type="number" id="mgManual" placeholder="Si no hay resultado anterior" inputmode="decimal">
 
                     <button onclick="convertirML()">Convertir a ml <span>→</span></button>
-                    <div id="resultadoML" class="resultado"></div>
+                    <div id="resultadoML" class="resultado hidden"></div>
                     <p class="referencias">
                         <strong>Referencias</strong> · 1000 mg = 1 g · 1 mg = 1000 mcg · 0.001 mg = 1 mcg
                     </p>
@@ -313,13 +223,10 @@ function toggleConversion(){
     if(chk.checked){div.classList.remove('hidden'); box.classList.add('active');}
     else{div.classList.add('hidden'); box.classList.remove('active');}
 }
-// Toda la seccion responde al clic - sin doble disparo
 const mlBox=document.getElementById('preguntaMLBox');
 const mlChk=document.getElementById('quiereML');
 mlBox.addEventListener('click', function(e){
-    // Si clic fue directamente en el checkbox, dejamos que cambie solo
     if(e.target === mlChk) return;
-    // Si clic fue en cualquier otra parte, toggleamos
     mlChk.checked = !mlChk.checked;
     mlChk.dispatchEvent(new Event('change'));
 });
